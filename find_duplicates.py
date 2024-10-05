@@ -13,11 +13,12 @@ def find_duplicate_files(folder):
                 file_word_map[word].append(file)
 
     for word, associated_files in file_word_map.items():
-        if len(associated_files) > 1:
-            for file in associated_files:
+        filtered_files = set(associated_files)
+        if len(filtered_files) > 1:
+            print(f"Duplicates found based on word '{word}':")
+            for file in filtered_files:
                 print(file)
             print()
 
 if __name__ == "__main__":
     find_duplicate_files(".")
-
